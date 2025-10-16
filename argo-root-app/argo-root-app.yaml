@@ -1,19 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: update-image-tags-yaml-octopub-production
-  annotations:
-    argo.octopus.com/project: "update-image-tags-yaml"
-    argo.octopus.com/environment: "production"
+  name: root-app
+  namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
     targetRevision: HEAD
-    path: manifests/update-image-tags-yaml-octopub/production/
+    path: argo-root-app/
   destination:
     server: https://kubernetes.default.svc
-    namespace: update-image-tags-yaml-octopub-production
+    namespace: argocd
   syncPolicy:
     automated:  
       prune: true

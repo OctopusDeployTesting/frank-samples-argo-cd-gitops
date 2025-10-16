@@ -9,16 +9,16 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/OctopusSolutionsEngineering/samples-argo-cd-gitops.git
+    - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
       targetRevision: HEAD
       path: manifests/update-image-tags-helm-octopub/test/chart
       helm:
         valueFiles:
           - $values/manifests/update-image-tags-helm-octopub/test/values/values.yaml
-    - repoURL: https://github.com/OctopusSolutionsEngineering/samples-argo-cd-gitops.git
+    - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
       targetRevision: HEAD
       ref: values
-    - repoURL: https://github.com/OctopusSolutionsEngineering/samples-argo-cd-gitops.git
+    - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
       targetRevision: HEAD
       path: manifests/update-image-tags-helm-octopub/test/values
   destination:

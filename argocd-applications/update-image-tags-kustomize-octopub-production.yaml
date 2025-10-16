@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/OctopusSolutionsEngineering/samples-argo-cd-gitops.git
+    repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
     targetRevision: HEAD
     path: manifests/update-image-tags-kustomize-octopub/production/
   destination:

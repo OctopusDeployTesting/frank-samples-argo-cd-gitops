@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
     targetRevision: HEAD
-    path: argo-root-app/
+    path: argocd-applications/
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

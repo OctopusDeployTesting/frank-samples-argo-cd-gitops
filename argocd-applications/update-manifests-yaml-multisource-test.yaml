@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: update-manifests-yaml-multisource-test
+  annotations:
+    argo.octopus.com/project.the-yaml: "update-manifests-yaml-multisource"
+    argo.octopus.com/environment.the-yaml: "test"
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
+      targetRevision: HEAD
+      path: manifests/update-manifests-yaml-multisource/test/
+      name: the-yaml
+    - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
+      targetRevision: HEAD
+      path: manifests/update-manifests-kustomize-octopub/test/  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: update-manifests-yaml-multisource-test
+  syncPolicy:
+    automated:  
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true

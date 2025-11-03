@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: update-manifests-helm-playhq-test
+  annotations:
+    argo.octopus.com/project: "update-manifests-helm-playhq"
+    argo.octopus.com/environment: "test"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
+    targetRevision: develop
+    path: playhq/charts/shared
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: update-manifests-helm-playhq-test
+  syncPolicy:
+    automated:  
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true

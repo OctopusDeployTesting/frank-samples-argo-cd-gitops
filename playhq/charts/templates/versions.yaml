@@ -1,0 +1,2 @@
+blah:
+  tag: #{Octopus.Action.Package[octopub-frontend].PackageId}:#{Octopus.Action.Package[octopub-frontend].PackageVersion}

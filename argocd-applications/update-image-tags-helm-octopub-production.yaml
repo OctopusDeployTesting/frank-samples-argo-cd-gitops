@@ -3,8 +3,8 @@ kind: Application
 metadata:
   name: update-image-tags-helm-octopub-production
   annotations:
-    #argo.octopus.com/project.values-source: "update-image-tags-helm"
-    #argo.octopus.com/environment.values-source: "production"
+    argo.octopus.com/project.values-source: "update-image-tags-helm"
+    argo.octopus.com/environment.values-source: "production"
     #argo.octopus.com/image-replace-paths.values: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
 spec:
   project: default
@@ -14,11 +14,15 @@ spec:
       path: manifests/update-image-tags-helm-octopub/production/chart
       helm:
         valueFiles:
-          - $values/manifests/update-image-tags-helm-octopub/production/values/values.yaml
+          - $other/manifests/update-image-tags-helm-octopub/production/values/values.yaml
     - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
       targetRevision: HEAD
       ref: values
       name: values-source
+    - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
+      targetRevision: HEAD
+      ref: other
+      name: other-source
   destination:
     server: https://kubernetes.default.svc
     namespace: update-image-tags-helm-octopub-production

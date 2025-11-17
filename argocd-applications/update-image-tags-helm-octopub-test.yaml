@@ -24,13 +24,6 @@ spec:
       targetRevision: HEAD
       ref: values
       name: values-source
-    - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
-      targetRevision: HEAD
-      path: manifests/update-image-tags-helm-octopub/test/values
-    - path: manifests/update-image-tags-helm-octopub/test/values
-      repoURL: https://github.com/OctopusSolutionsEngineering/samples-argo-cd-gitops
-      targetRevision: HEAD
-      name: no-git-creds
   destination:
     server: https://kubernetes.default.svc
     namespace: update-image-tags-helm-octopub-test

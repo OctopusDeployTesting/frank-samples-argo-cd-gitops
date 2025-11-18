@@ -8,6 +8,7 @@ metadata:
     argo.octopus.com/environment: "test"
     argo.octopus.com/environment.third: test
     argo.octopus.com/environment.values-source: test
+    argo.octopus.com/tenant.values-source: "t1"
     argo.octopus.com/image-replace-paths.helm-source: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
     argo.octopus.com/project.the-ref: update-image-tags-helm
 spec:

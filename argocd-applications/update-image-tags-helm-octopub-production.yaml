@@ -3,6 +3,7 @@ kind: Application
 metadata:
   name: update-image-tags-helm-octopub-production
   annotations:
+    argo.octopus.com/project.other-source: "update-image-tags-helm"
     argo.octopus.com/project.values-source: "update-image-tags-helm"
     argo.octopus.com/environment.values-source: "production"
     #argo.octopus.com/image-replace-paths.values: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

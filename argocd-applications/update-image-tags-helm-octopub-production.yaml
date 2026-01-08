@@ -16,7 +16,7 @@ spec:
       name: helm-source
       helm:
         valueFiles:
-          - $other/manifests/update-image-tags-helm-octopub/production/values/values.yaml
+          - $values/manifests/update-image-tags-helm-octopub/production/values/values.yaml
     - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
       targetRevision: HEAD
       ref: values
@@ -26,7 +26,7 @@ spec:
       path: manifests/update-image-tags-helm-octopub/production/chart
       helm:
         valueFiles:
-          - $values/manifests/update-image-tags-helm-octopub/production/values/values.yaml
+          - $other/manifests/update-image-tags-helm-octopub/production/values/values.yaml
     - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
       targetRevision: HEAD
       ref: other

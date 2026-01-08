@@ -6,13 +6,14 @@ metadata:
     argo.octopus.com/project.other-source: "update-image-tags-helm"
     argo.octopus.com/project.values-source: "update-image-tags-helm"
     argo.octopus.com/environment.values-source: "production"
-    argo.octopus.com/image-replace-paths.values-source: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+    argo.octopus.com/image-replace-paths.helm-source: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
 spec:
   project: default
   sources:
     - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
       targetRevision: HEAD
       path: manifests/update-image-tags-helm-octopub/production/chart
+      name: helm-source
       helm:
         valueFiles:
           - $other/manifests/update-image-tags-helm-octopub/production/values/values.yaml

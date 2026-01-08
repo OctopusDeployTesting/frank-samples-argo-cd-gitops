@@ -22,7 +22,7 @@ spec:
       name: values-source
     - repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
       targetRevision: HEAD
-      path: manifests/update-image-tags-helm-octopub/production/chart2
+      path: manifests/update-image-tags-helm-octopub/production/chart
       helm:
         valueFiles:
           - $values/manifests/update-image-tags-helm-octopub/production/values/values.yaml

@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: octopussamples/octopub-products-microservice
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
+  # Overrides the image tag whose default is the chart appVersion
   tag: "20260224.1155.1"
 
 database:

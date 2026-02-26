@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: octopub-ingress
   annotations:
-    - octopus-release-version: "v0.0.3"
+    octopus-release-version: "v0.0.4"
 spec:
   ingressClassName: nginx
   rules:

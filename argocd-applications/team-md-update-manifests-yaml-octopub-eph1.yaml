@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: team-md-update-manifests-yaml-octopub-eph1
+  annotations:
+    argo.octopus.com/project: "team-md-update-manifests-yaml"
+    argo.octopus.com/environment: "eph1"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
+    targetRevision: HEAD
+    path: manifests/team-md-update-manifests-yaml-octopub/eph1/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: team-md-update-manifests-yaml-octopub-eph1
+  syncPolicy:
+    automated:  
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true

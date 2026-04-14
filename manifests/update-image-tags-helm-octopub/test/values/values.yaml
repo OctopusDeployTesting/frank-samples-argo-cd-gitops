@@ -78,7 +78,7 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
-  #
+
 autoscaling:
   enabled: false
   minReplicas: 1

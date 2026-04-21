@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: update-manifests-helm-myapp-test
+  annotations:
+    argo.octopus.com/project: "update-manifests-helm-app"
+    argo.octopus.com/environment: "test"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
+    targetRevision: HEAD
+    path: manifests/update-manifests-helm-myapp/test/
+    helm:
+      valueFiles:
+        - test_values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: update-manifests-helm-myapp-test
+  syncPolicy:
+    automated:  
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true

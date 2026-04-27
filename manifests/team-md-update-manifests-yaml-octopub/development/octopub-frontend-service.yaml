@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: octopub-frontend-cluster-ip
   annotations:
-    octopus-release-version: "v0.0.15"
+    octopus-release-version: "v0.0.15A"
 spec:
   type: ClusterIP
   selector:

@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: update-manifests-yaml-octopub-test-gitlab
+  annotations:
+    argo.octopus.com/project: "update-manifests-yaml"
+    argo.octopus.com/environment: "test"
+spec:
+  project: default
+  source:
+    repoURL: https://gitlab.com/frank.lin6/frank-ratelimit-sample
+    targetRevision: HEAD
+    path: manifests/update-manifests-yaml-octopub/test/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: update-manifests-yaml-octopub-test-gitlab
+  syncPolicy:
+    automated:  
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true

@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://gitlab.com/frank.lin6/frank-ratelimit-sample
+    repoURL: https://gitlab.com/frank.lin6/frank-ratelimit-sample.git
     targetRevision: HEAD
     path: manifests/update-manifests-yaml-octopub/test/
   destination:

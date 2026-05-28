@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: update-manifests-yaml-octopub-test
+  namespace: some-namespace
+  annotations:
+    argo.octopus.com/project: "update-manifests-yaml"
+    argo.octopus.com/environment: "test"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
+    targetRevision: HEAD
+    path: manifests/update-manifests-yaml-octopub-some-namespace/test/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: update-manifests-yaml-octopub-test-some-namespace
+  syncPolicy:
+    automated:  
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true

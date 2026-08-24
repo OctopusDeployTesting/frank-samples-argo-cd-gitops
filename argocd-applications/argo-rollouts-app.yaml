@@ -1,0 +1,21 @@
+# Replace repoURL with your own git repo containing the manifests/ directory.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rollouts-demo-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
+    targetRevision: HEAD
+    path: manifests/argo-rollouts-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rollouts-demo-argo-cd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

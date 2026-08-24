@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollouts-demo-argo-cd
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo-argo-cd
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo-argo-cd
+    spec:
+      containers:
+        - name: rollouts-demo-argo-cd
+          image: argoproj/rollouts-demo:blue
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 32Mi
+              cpu: 5m
+  strategy:
+    canary:
+      steps:
+        # 20% of traffic (1 of 5 pods), then wait for a human to promote.
+        - setWeight: 20
+        - pause: {}
+        # After promotion, ramp automatically with timed pauses.
+        - setWeight: 40
+        - pause: {duration: 30s}
+        - setWeight: 60
+        - pause: {duration: 30s}
+        - setWeight: 80
+        - pause: {duration: 30s}

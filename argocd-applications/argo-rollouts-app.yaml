@@ -4,12 +4,15 @@ kind: Application
 metadata:
   name: rollouts-demo-app
   namespace: argocd
+  annotations:
+    argo.octopus.com/project: "update-manifests-rollouts"
+    argo.octopus.com/environment: "test"
 spec:
   project: default
   source:
     repoURL: https://github.com/OctopusDeployTesting/frank-samples-argo-cd-gitops
     targetRevision: HEAD
-    path: manifests/argo-rollouts-app
+    path: manifests/update-manifests-rollouts/test/
   destination:
     server: https://kubernetes.default.svc
     namespace: rollouts-demo-argo-cd

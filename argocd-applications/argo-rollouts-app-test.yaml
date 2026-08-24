@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rollouts-demo-app
+  name: rollouts-demo-app-test
   namespace: argocd
   annotations:
     argo.octopus.com/project: "update-manifests-rollouts"

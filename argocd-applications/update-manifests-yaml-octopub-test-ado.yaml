@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: update-manifests-yaml-octopub-test-ado
+  annotations:
+    argo.octopus.com/project: "update-manifests-yaml"
+    argo.octopus.com/environment: "test"
+spec:
+  project: default
+  source:
+    repoURL: https://flin-test@dev.azure.com/flin-test/Random%20Quotes/_git/Random%20Quotes
+    targetRevision: HEAD
+    path: manifests/update-manifests-yaml-octopub/test/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: update-manifests-yaml-octopub-test-ado
+  syncPolicy:
+    automated:  
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=false
+    - CreateNamespace=true

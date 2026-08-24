@@ -16,7 +16,7 @@ kind: Deployment
 metadata:
   name: octopub-productservice-deployment
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       component: productservice
